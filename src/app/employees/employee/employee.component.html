@@ -1,1 +1,56 @@
-<p>employee works!</p>
+<!-- Se crea el formulario -->
+<!--Recordar importar en el modulo raiz el FormsModule-->
+<form #form="ngForm">
+    <!--Div para cada CAMPO-->
+    <div class="form-group">
+        <!--Titulo del Campo-->
+        <label>FULL NAME</label>
+        <!--Input que recibe los datos del Usuario, como esta escrito en el Modelo-->
+        <!--Utilizamos binding de dos vias con ngModel para que el valor de una variable se actualize en ambos sentidos-->
+        <input name="FullName" #FullName="ngModel" [(ngModel)]="service.formdata.FullName" class="form-control">
+    </div>
+
+    <!--Div para cada CAMPO-->
+    <div class="form-group">
+        <!--Titulo del Campo-->
+        <label>EMP Code</label>
+        <!--Input que recibe los datos del Usuario, como esta escrito en el Modelo-->
+        <!--Utilizamos binding de dos vias con ngModel para que el valor de una variable se actualize en ambos sentidos-->
+        <input name="EMPCode" #EMPCode="ngModel" [(ngModel)]="service.formdata.EMPCode" class="form-control">
+    </div>
+
+
+    <!--Si queremos que los input queden en la misma Fila utilizamos form-row-->
+    <div class="form-row">
+
+      <!--Div para cada CAMPO-->
+      <div class="form-group">
+            <!--Titulo del Campo-->
+            <label>Mobile</label>
+            <!--Input que recibe los datos del Usuario, como esta escrito en el Modelo-->
+            <!--Utilizamos binding de dos vias con ngModel para que el valor de una variable se actualize en ambos sentidos-->
+            <input name="Mobile" #Mobile="ngModel" [(ngModel)]="service.formdata.Mobile" class="form-control">
+        </div>
+
+        <!--Div para cada CAMPO-->
+        <div class="form-group">
+            <!--Titulo del Campo-->
+            <label>Position</label>
+            <!--Input que recibe los datos del Usuario, como esta escrito en el Modelo-->
+            <!--Utilizamos binding de dos vias con ngModel para que el valor de una variable se actualize en ambos sentidos-->
+            <input name="Position" #Position="ngModel" [(ngModel)]="service.formdata.Position" class="form-control">
+        </div>
+
+    </div>
+
+
+
+
+    <!--Boton de Guardado-->
+    <div class="form-group">
+        <button type="submit" [disabled]="form.invalid" class="btn btn-block"><i class="fa fa-database"></i>
+            Guardar</button>
+    </div>
+
+
+</form>
