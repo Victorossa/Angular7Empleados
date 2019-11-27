@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from 'src/app/shared/employee.service';
 import { NgForm } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-employee',
@@ -9,7 +10,8 @@ import { NgForm } from '@angular/forms';
 })
 export class EmployeeComponent implements OnInit {
   //Se inyecta en el constructor el Servicio mediante una variable privada
-  constructor(private service: EmployeeService) { }
+  //Se inyecta en el constructor el Servicio Para los Avizox
+  constructor(private service: EmployeeService, private toastr: ToastrService) { }
 
   ngOnInit() {
     //Ubicamos el restablecimiento del formulario en la tarea de inicializacion
@@ -37,7 +39,11 @@ export class EmployeeComponent implements OnInit {
   insertRecord(form: NgForm) {
     //Guardo y limpio el formulario
     this.service.postEmployye(form.value).subscribe(res => {
-      this.resetForm(form)
+      //Avizo que informa que fue Guardado
+      this.toastr.success('Guardado Exitoso!!!- Empleado', 'Api Angular')
+      //this.service.refreshList();
+      this.resetForm(form);
     })
-  }
+  } 
+
 }
