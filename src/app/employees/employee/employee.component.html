@@ -1,6 +1,8 @@
 <!-- Se crea el formulario -->
 <!--Recordar importar en el modulo raiz el FormsModule-->
 <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+    <!--ID de la tabla-->
+    <input type="hidden" name="EmployeeID" #EmployeeID="ngModel" [(ngModel)]="service.formData.EmployeeID" class="form-control">    
     <!--Div para cada CAMPO-->
     <div class="form-group">
         <!--Titulo del Campo-->
