@@ -55,11 +55,13 @@ export class EmployeeComponent implements OnInit {
   updateRecord(form: NgForm) {
     this.service.putEmployye(form.value).subscribe(res => {
       //Avizo que informa que fue Actualizado
-      this.toastr.success('Actualizado Exitoso!!!- Empleado', 'Api Angular')
+      this.toastr.warning('Actualizado Exitoso!!!- Empleado', 'Api Angular')
       //Refresca la lista cuando guarda
       this.service.refreshList();
       this.resetForm(form);
     })
   }
+
+  
 
 }

@@ -26,6 +26,12 @@ export class EmployeeService {
     //utiliza el metodo put del http que tiene como parametro la url, la clave principal y el formulario
     return this.http.put(environment.rootURL + '/Employye/' + formdata.EmployeeID, formdata);
   }
+
+  deleteEmployye(id:number) {
+    //utiliza el metodo put del http que tiene como parametro la url, la clave principal y el formulario
+    return this.http.delete(environment.rootURL + '/Employye/' +id);
+  }
+
   //Recarga la lista de los items y refresca los items
   refreshList() {
     this.http.get(environment.rootURL + '/Employye')
