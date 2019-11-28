@@ -24,9 +24,9 @@ export class EmployeeService {
   //Metodo Put, este actualiza el registro
   putEmployye(formdata: Employee) {
     //utiliza el metodo put del http que tiene como parametro la url, la clave principal y el formulario
-    return this.http.put(environment.rootURL + '/Employye' + formdata.EmployeeID, formdata);
+    return this.http.put(environment.rootURL + '/Employye/' + formdata.EmployeeID, formdata);
   }
-  //Recarga la lista de los items
+  //Recarga la lista de los items y refresca los items
   refreshList() {
     this.http.get(environment.rootURL + '/Employye')
       .toPromise().then(res => this.list = res as Employee[])

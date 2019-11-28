@@ -33,7 +33,12 @@ export class EmployeeComponent implements OnInit {
 
   //Metodo que viene del formulario
   onSubmit(form: NgForm) {
-    this.insertRecord(form)
+    //Si el ID viene Nulo es para Insertar
+    if (form.value.EmployeeID == null)
+      this.insertRecord(form)
+    else
+      //Si trae ID lo Actualiza
+      this.updateRecord(form)
   }
 
   insertRecord(form: NgForm) {
@@ -41,9 +46,20 @@ export class EmployeeComponent implements OnInit {
     this.service.postEmployye(form.value).subscribe(res => {
       //Avizo que informa que fue Guardado
       this.toastr.success('Guardado Exitoso!!!- Empleado', 'Api Angular')
-      //this.service.refreshList();
+      //Refresca la lista cuando guarda
+      this.service.refreshList();
       this.resetForm(form);
     })
-  } 
+  }
+
+  updateRecord(form: NgForm) {
+    this.service.putEmployye(form.value).subscribe(res => {
+      //Avizo que informa que fue Actualizado
+      this.toastr.success('Actualizado Exitoso!!!- Empleado', 'Api Angular')
+      //Refresca la lista cuando guarda
+      this.service.refreshList();
+      this.resetForm(form);
+    })
+  }
 
 }
