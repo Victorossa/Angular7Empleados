@@ -62,6 +62,11 @@ export class EmployeeComponent implements OnInit {
     })
   }
 
+  cleanData(form: NgForm){
+    this.service.refreshList();
+      this.resetForm(form);
+  }
+
   
 
 }
